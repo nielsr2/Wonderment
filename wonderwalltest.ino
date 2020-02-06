@@ -47,7 +47,8 @@ void setup() {
   mixer2.gain(1, 0.15);
   mixer2.gain(2, 0.15);
   delay(700);
-  startY = analogRead(16) * 1.2;
+  yDown = analogRead(16) * 1.2;
+  yUp = analogRead(16) * 0.8;
 }
 
 void strum_up(const float *chord, float velocity);
@@ -62,7 +63,10 @@ void loop() {
   // Serial.printf("x is %d, y is %d, z is %d", x,y,z);
   Serial.println(y);
 
-  if (y > startY ){
+  if (y > yDown ){
+    Serial.println("DOWN");
+  }
+  else if (y < yUp ){
     Serial.println("THRESSS");
   }
   // Serial.clear();
