@@ -5,6 +5,47 @@
 #include <SerialFlash.h>
 
 #include "chords.h"
+// **********************************************************************
+
+
+// GUItool: begin automatically generated code
+// AudioSynthKarplusStrong  string7;        //xy=294,456
+// AudioSynthKarplusStrong  string9;        //xy=323,556
+// AudioSynthKarplusStrong  string8;        //xy=325,502
+// AudioSynthKarplusStrong  string10;       //xy=350,611
+// AudioSynthKarplusStrong  string11;       //xy=387,669
+// AudioSynthKarplusStrong  string12;       //xy=429,731
+// AudioEffectBitcrusher    bitcrusher1;    //xy=521,431
+// AudioEffectBitcrusher    bitcrusher2;    //xy=549,463
+// AudioEffectBitcrusher    bitcrusher3;    //xy=578,504
+// AudioMixer4              mixer3;         //xy=612,344
+// AudioEffectBitcrusher    bitcrusher4;    //xy=621,545
+// AudioEffectBitcrusher    bitcrusher5;    //xy=657,574
+// AudioEffectBitcrusher    bitcrusher6;    //xy=700,609
+// AudioMixer4              mixer4;         //xy=756,434
+// AudioOutputI2S           i2s2;           //xy=840,275
+// AudioConnection          patchCord12(string7, bitcrusher1);
+// AudioConnection          patchCord22(string9, bitcrusher3);
+// AudioConnection          patchCord32(string8, bitcrusher2);
+// AudioConnection          patchCord42(string10, bitcrusher4);
+// AudioConnection          patchCord52(string11, bitcrusher5);
+// AudioConnection          patchCord62(string12, bitcrusher6);
+// AudioConnection          patchCord72(bitcrusher1, 0, mixer3, 0);
+// AudioConnection          patchCord82(bitcrusher2, 0, mixer3, 1);
+// AudioConnection          patchCord92(bitcrusher3, 0, mixer3, 2);
+// AudioConnection          patchCord102(mixer3, 0, mixer4, 0);
+// AudioConnection          patchCord112(bitcrusher4, 0, mixer3, 3);
+// AudioConnection          patchCord122(bitcrusher5, 0, mixer4, 1);
+// AudioConnection          patchCord132(bitcrusher6, 0, mixer4, 3);
+// AudioConnection          patchCord142(mixer4, 0, i2s2, 0);
+// AudioConnection          patchCord152(mixer4, 0, i2s2, 1);
+// AudioControlSGTL5000     sgtl5000_1;     //xy=1023,236
+// GUItool: end automatically generated code
+// **********************************************************************
+
+
+
+
 
 // Special thanks to Matthew Rahtz - http://amid.fish/karplus-strong/
 
@@ -26,19 +67,18 @@ AudioConnection patchCord6(string5, 0, mixer2, 1);
 AudioConnection patchCord7(string6, 0, mixer2, 2);
 AudioConnection patchCord8(mixer2, 0, i2s1, 0);
 AudioConnection patchCord9(mixer2, 0, i2s1, 1);
-AudioEffectBitcrusher bitcrusher1;       //xy=631,269
+// AudioEffectBitcrusher bitcrusher1, bitcrusher2, bitcrusher3, bitcrusher4, bitcrusher5, bitcrusher6;       //xy=631,269
 AudioControlSGTL5000 sgtl5000_1;
-
 // AudioConnection          patchCord10(bitcrusher1, 0, mixer2, 3);
-
 // AudioConnection          patchCord3(string6, bitcrusher1);
 const int finger_delay = 5;
-const int hand_delay = 220;
+const int hand_delay = 100;
 
 int chordnum=0;
 
 
 int x,y,z;
+int coolNumber;
 int yDown, yUp, yMid;
 void setup() {
         AudioMemory(15);
@@ -51,9 +91,13 @@ void setup() {
         mixer2.gain(1, 0.15);
         mixer2.gain(2, 0.15);
         delay(700);
-        yDown = analogRead(16) * 1.1;
-        yUp = analogRead(16) * 0.9;
-        yMid = analogRead(16);
+        x = analogRead(14);
+        z = analogRead(15);
+        y = analogRead(16);
+        coolNumber = sqrt(pow(x,2) + pow(y,2) + pow(z,2));
+        yDown = coolNumber * 1.1;
+        yUp =   coolNumber * 0.9;
+        yMid =  coolNumber;
 }
 
 void strum_up(const float *chord, float velocity);
@@ -71,8 +115,9 @@ void loop() {
         x = analogRead(14);
         z = analogRead(15);
         y = analogRead(16);
+        coolNumber = sqrt(pow(x,2) + pow(y,2) + pow(z,2));
         // Serial.println("x:" + x +  "y: " +   y + "z: " + z);
-
+        Serial.println(coolNumber);
 
         // Serial.printf("y is %d, down is %d, up is %d",x, yDown, yUp);
         // Serial.println();
@@ -88,19 +133,19 @@ void loop() {
         // if (x)
         if (played) {
           // Serial.println("WAITING FOR RESET" + direction);
-          Serial.printf("WIATING FOR RESET : y is %d, D=%d, M=%d U=%d,  x is %d, z is %d", y, yDown, yMid, yUp, x,z );
-          Serial.println();
+          // Serial.printf("WIATING FOR RESET : y is %d, D=%d, M=%d U=%d,  x is %d, z is %d", y, yDown, yMid, yUp, x,z );
+          // Serial.println();
                 if (direction) {
                         if (y > yMid) {
                             played = false;
-                            Serial.println("pLAYED SET TO FALSE");
+                            // Serial.println("pLAYED SET TO FALSE");
 
                         }
                 }
                 else {
                   if (y < yMid) {
                       played = false;
-                      Serial.println("pLAYED SET TO FALSE");
+                      // Serial.println("pLAYED SET TO FALSE");
 
                   }
                 }
@@ -189,7 +234,14 @@ void loop() {
 
 
 
-
+void powerDOWN(const float *chord, float velocity){
+  if (chord[0] > 20.0) string1.noteOn(chord[0], velocity);
+  if (chord[1] > 20.0) string2.noteOn(chord[1], velocity);
+  if (chord[2] > 20.0) string3.noteOn(chord[2], velocity);
+  if (chord[3] > 20.0) string4.noteOn(chord[3], velocity);
+  if (chord[4] > 20.0) string5.noteOn(chord[4], velocity);
+  if (chord[5] > 20.0) string6.noteOn(chord[5], velocity);
+}
 
 
 
