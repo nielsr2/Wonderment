@@ -122,18 +122,18 @@ void setup() {
         AudioMemory(15);
         sgtl5000_1.enable();
         sgtl5000_1.volume(0.6);
-        mixer1.gain(0, 0.15);
-        mixer1.gain(1, 0.15);
-        mixer1.gain(2, 0.15);
-        mixer1.gain(3, 0.15);
-        mixer2.gain(1, 0.15);
-        mixer2.gain(2, 0.15);
-        mixer3.gain(1, 0.15);
-        mixer3.gain(2, 0.15);
+        mixer1.gain(0, 0.30);
+        mixer1.gain(1, 0.30);
+        mixer1.gain(2, 0.30);
+        mixer1.gain(3, 0.30);
+        mixer2.gain(1, 0.30);
+        mixer2.gain(2, 0.30);
+        mixer3.gain(1, 0.30);
+        mixer3.gain(2, 0.30);
 
         // x =
         // z = ;
-        y = analogRead(accelorometerPinY);
+        z = analogRead(accelorometerPinZ);
         // combi = sqrt(pow(analogRead(accelorometerPinX),2) + pow(analogRead(accelorometerPinY),2) + pow(analogRead(accelorometerPinZ),2));
         combi = z;
         down = combi * 1.2;
