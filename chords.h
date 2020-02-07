@@ -63,11 +63,11 @@ const float A7sus4[6] = {0, NOTE_A2, NOTE_E3, NOTE_G3, NOTE_D4, NOTE_G4};  // G 
 const float A7sus42[6] = {0, 0, NOTE_D3, NOTE_G3, NOTE_D4, NOTE_G4};
 
 // IRON man
-const float Bpow[6] = {0, NOTE_B2, NOTE_Fs3, 0,0,0};
-const float Dpow[6] = {0, NOTE_D3, NOTE_A3,0,0,0};
-const float Epow[6] = {0, NOTE_E3, NOTE_C4,0,0,0};
-const float Gpow[6] = {0, NOTE_G3, NOTE_D4,0,0,0};
-const float Fspow[6] = {0, NOTE_Fs3, NOTE_Cs4,0,0,0};
+const float Bpow[6] = {0, NOTE_B2, NOTE_Fs3, NOTE_B3,0,0};
+const float Dpow[6] = {0, NOTE_D3, NOTE_A3,NOTE_D4,0,0};
+const float Epow[6] = {0, NOTE_E3, NOTE_C4,NOTE_E4,0,0};
+const float Gpow[6] = {0, NOTE_G3, NOTE_D4,NOTE_G4,0,0};
+const float Fspow[6] = {0, NOTE_Fs3, NOTE_Cs4,NOTE_Fs4,0,0};
 //                   E2, F2, F2#, G2, G2#, A2, A2#, B2
 // C3, C3#, D3, D3#, E3, F3, F3#, G3, G3#, A3, A3#, B3
 // C4, C4#, D4, D4#, E4, F4, F4#, G4, G4#, A4, A4#, B4
