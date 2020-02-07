@@ -122,22 +122,39 @@ void setup() {
         AudioMemory(15);
         sgtl5000_1.enable();
         sgtl5000_1.volume(0.6);
-        mixer1.gain(0, 0.30);
-        mixer1.gain(1, 0.30);
-        mixer1.gain(2, 0.30);
-        mixer1.gain(3, 0.30);
-        mixer2.gain(1, 0.30);
-        mixer2.gain(2, 0.30);
-        mixer3.gain(1, 0.30);
-        mixer3.gain(2, 0.30);
+        mixer1.gain(0, 0.60);
+        mixer1.gain(1, 0.60);
+        mixer1.gain(2, 0.60);
+        mixer1.gain(3, 0.60);
+        mixer2.gain(1, 0.60);
+        mixer2.gain(2, 0.60);
+        mixer3.gain(1, 0.60);
+        mixer3.gain(2, 0.60);
+        bitcrusher6.bits(3);
+        bitcrusher6.sampleRate(44100/5);
+
+        bitcrusher5.bits(3);
+        bitcrusher5.sampleRate(44100/5);
+
+        bitcrusher4.bits(3);
+        bitcrusher4.sampleRate(44100/5);
+
+        bitcrusher3.bits(3);
+        bitcrusher3.sampleRate(44100/5);
+
+        bitcrusher2.bits(3);
+        bitcrusher2.sampleRate(44100/5);
+
+        bitcrusher1.bits(3);
+        bitcrusher1.sampleRate(44100/5);
 
         // x =
         // z = ;
-        z = analogRead(accelorometerPinZ);
+        y = analogRead(accelorometerPinY);
         // combi = sqrt(pow(analogRead(accelorometerPinX),2) + pow(analogRead(accelorometerPinY),2) + pow(analogRead(accelorometerPinZ),2));
-        combi = z;
-        down = combi * 1.2;
-        up = combi * 0.8;
+        combi = y;
+        down = combi * 1.15;
+        up = combi * 0.85;
         mid = combi;
         delay(700);
 }
@@ -240,11 +257,11 @@ void loop() {
         z = analogRead(accelorometerPinZ);
         y = analogRead(accelorometerPinY);
         // combi = sqrt(pow(x,2) + pow(y,2) + pow(z,2));
-        combi = z;
+        combi = y;
 
         // mid = combi;
-
-        Serial.printf("combi is  %d, D=%d, M=%d U=%d", combi, down, mid, up);
+        // Serial.printf("x=   %d, y=%d, z=%d", x, y, z);
+        Serial.printf("combi is  %d, D=%d, M=%d U=%d, CHORD= %d", combi, down, mid, up, chord);
         Serial.println();
         // count = count % bLength;
         // count = (count % avgbufLen);
@@ -283,9 +300,10 @@ void loop() {
                 }
                 else {
                         im = true;
-                                        Serial.println("SWITCHED MODE :");
+                        Serial.println("SWITCHED MODE :");
                         Serial.println(im);
                 }
+                delay(200);
         }
         // b1 & b2
         else if (b1 > 80 && b2 > 80) {
@@ -300,7 +318,7 @@ void loop() {
 
                 // powerDOWN(chord, 1.);
 
-                // Serial.println("Bpow");
+                Serial.println("Bpow");
         }
         // b1
         else if (b1 > 80 ) {
@@ -317,7 +335,7 @@ void loop() {
                 // powerDOWN(chord, 1.);
                 // strum_dn(chord, 1.0);
                 // delay(hand_delay);
-                // Serial.println("Bpow");
+                Serial.println("Dpow");
         }
         // b2
         else if (b2 > 80) {
@@ -335,7 +353,7 @@ void loop() {
                 // chord = Gmajor;
                 // strum_dn(chord, 1.0);
                 // delay(hand_delay);
-                // Serial.println("Dpow");
+                Serial.println("Epow");
 
         }
         // b3
@@ -351,7 +369,7 @@ void loop() {
                   delay(hand_delay);}
                 // strum_dn(chord, 1.0);
                 // delay(hand_delay);
-                // Serial.println("Epow");
+                Serial.println("Fspow");
 
         }
         // b4
@@ -367,7 +385,7 @@ void loop() {
                   delay(hand_delay);}
                 // strum_dn(chord, 1.0);
                 // delay(hand_delay);
-                // Serial.println("Fspow");
+                Serial.println("Gpow");
                 //
         }
         // **********************************************************************
@@ -396,28 +414,34 @@ void loop() {
         //         }
         // }
         // else {
-                if (combi > down ) {
-                        // Serial.println();
-                        Serial.println("UP");
-                        // Serial.printf("x is %d, D=%d, M=%d U=%d,  y is %d, z is %d", x, yDown, yMid, yUp, y,z );
-                        // Serial.println();
-                        direction = false;
+        if (combi > down ) {
+                // Serial.println();
+                Serial.println("UP");
+                // Serial.printf("x is %d, D=%d, M=%d U=%d,  y is %d, z is %d", x, yDown, yMid, yUp, y,z );
+                // Serial.println();
+                direction = false;
+                if (im)
+                        strum_power(chord, 1.0);
+                else
                         strum_dn(chord, 1.0);
-                        delay(hand_delay);
-                        delay(hand_delay);
-                        // played = true;
-                }
-                else if (combi < up ) {
-                        // Serial.println();
-                        Serial.println("DOWNN");
-                        // Serial.printf("x is %d, D=%d, M=%d U=%d,  y is %d, z is %d", x, yDown, yMid, yUp, y,z );
-                        // Serial.println();
-                        strum_dn(chord, 1.0);
-                        direction = true;
-                        delay(hand_delay);
-                        delay(hand_delay);
-                        // played = true;
-                }
+                delay(hand_delay);
+                // delay(hand_delay);
+                // played = true;
+        }
+        // else if (combi < up ) {
+        //         // Serial.println();
+        //         Serial.println("DOWNN");
+        //         // Serial.printf("x is %d, D=%d, M=%d U=%d,  y is %d, z is %d", x, yDown, yMid, yUp, y,z );
+        //         // Serial.println();
+        //         if (im)
+        //                 strum_power(chord, 1.0);
+        //         else
+        //                 strum_dn(chord, 1.0);
+        //         direction = true;
+        //         delay(hand_delay);
+        //         delay(hand_delay);
+        //         // played = true;
+        // }
         // }
         // Serial.print("Max CPU Usage = ");
         // Serial.print(AudioProcessorUsageMax(), 1);
