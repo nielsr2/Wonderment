@@ -6,39 +6,36 @@
   #include <CapacitiveSensor.h>
 
 #include "chords.h"
+
 // **********************************************************************
 
-#include <Audio.h>
-#include <Wire.h>
-#include <SPI.h>
-#include <SD.h>
-#include <SerialFlash.h>
 
 // GUItool: begin automatically generated code
-AudioSynthKarplusStrong string1;         //xy=147,50
-AudioSynthKarplusStrong string2;         //xy=158,127
-AudioSynthKarplusStrong string3;         //xy=159,168
-AudioSynthKarplusStrong string4;         //xy=161,213
-AudioSynthKarplusStrong string5;         //xy=165,264
-AudioSynthKarplusStrong string7;         //xy=166,367
-AudioSynthKarplusStrong string6;         //xy=170,300
-AudioSynthKarplusStrong string8;         //xy=173,395
-AudioSynthKarplusStrong string9;         //xy=217,449
-AudioSynthKarplusStrong string10;        //xy=225,518
-AudioSynthKarplusStrong string11;        //xy=251,583
-AudioSynthKarplusStrong string12;        //xy=289,638
-AudioEffectBitcrusher bitcrusher6;       //xy=345,360
-AudioEffectBitcrusher bitcrusher4;       //xy=356,442
-AudioEffectBitcrusher bitcrusher5;       //xy=365,404
-AudioEffectBitcrusher bitcrusher3;       //xy=390,515
-AudioMixer4 mixer1;                      //xy=393,257
-AudioEffectBitcrusher bitcrusher2;       //xy=401,582
-AudioEffectBitcrusher bitcrusher1;       //xy=427,640
-AudioMixer4 mixer2;                      //xy=535,288
-AudioMixer4 mixer3;                      //xy=623,392
-AudioMixer4 mixer4;                      //xy=786,389
-AudioMixer4 mixer5;                      //xy=876,296
-AudioOutputI2S i2s1;                     //xy=989,209
+AudioSynthKarplusStrong string1;         //xy=829,379
+AudioSynthKarplusStrong string2;         //xy=840,456
+AudioSynthKarplusStrong string3;         //xy=841,497
+AudioSynthKarplusStrong string4;         //xy=843,542
+AudioSynthKarplusStrong string5;         //xy=847,593
+AudioSynthKarplusStrong string7;         //xy=848,696
+AudioSynthKarplusStrong string6;         //xy=852,629
+AudioSynthKarplusStrong string8;         //xy=855,724
+AudioSynthKarplusStrong string9;         //xy=899,778
+AudioSynthKarplusStrong string10;        //xy=907,847
+AudioSynthKarplusStrong string11;        //xy=933,912
+AudioSynthKarplusStrong string12;        //xy=971,967
+AudioEffectBitcrusher bitcrusher6;       //xy=1027,689
+AudioEffectBitcrusher bitcrusher4;       //xy=1038,771
+AudioEffectBitcrusher bitcrusher5;       //xy=1047,733
+AudioEffectBitcrusher bitcrusher3;       //xy=1072,844
+AudioMixer4 mixer1;                      //xy=1075,586
+AudioEffectBitcrusher bitcrusher2;       //xy=1083,911
+AudioEffectBitcrusher bitcrusher1;       //xy=1109,969
+AudioMixer4 mixer2;                      //xy=1217,617
+AudioSynthSimpleDrum drum1;              //xy=1290,408
+AudioMixer4 mixer3;                      //xy=1305,721
+AudioMixer4 mixer4;                      //xy=1468,718
+AudioMixer4 mixer5;                      //xy=1558,625
+AudioOutputI2S i2s1;                     //xy=1671,538
 AudioConnection patchCord1(string1, 0, mixer1, 0);
 AudioConnection patchCord2(string2, 0, mixer1, 1);
 AudioConnection patchCord3(string3, 0, mixer1, 2);
@@ -59,11 +56,72 @@ AudioConnection patchCord17(mixer1, 0, mixer2, 0);
 AudioConnection patchCord18(bitcrusher2, 0, mixer4, 1);
 AudioConnection patchCord19(bitcrusher1, 0, mixer4, 2);
 AudioConnection patchCord20(mixer2, 0, mixer5, 2);
-AudioConnection patchCord21(mixer3, 0, mixer4, 0);
-AudioConnection patchCord22(mixer4, 0, mixer5, 3);
-AudioConnection patchCord23(mixer5, 0, i2s1, 1);
-AudioConnection patchCord24(mixer5, 0, i2s1, 0);
-AudioControlSGTL5000 sgtl5000_1;         //xy=374,82
+AudioConnection patchCord21(drum1, 0, mixer5, 0);
+AudioConnection patchCord22(mixer3, 0, mixer4, 0);
+AudioConnection patchCord23(mixer4, 0, mixer5, 3);
+AudioConnection patchCord24(mixer5, 0, i2s1, 1);
+AudioConnection patchCord25(mixer5, 0, i2s1, 0);
+AudioControlSGTL5000 sgtl5000_1;         //xy=1056,411
+// GUItool: end automatically generated code
+
+// **********************************************************************
+
+// #include <Audio.h>
+// #include <Wire.h>
+// #include <SPI.h>
+// #include <SD.h>
+// #include <SerialFlash.h>
+
+// GUItool: begin automatically generated code
+// AudioSynthKarplusStrong string1;         //xy=147,50
+// AudioSynthKarplusStrong string2;         //xy=158,127
+// AudioSynthKarplusStrong string3;         //xy=159,168
+// AudioSynthKarplusStrong string4;         //xy=161,213
+// AudioSynthKarplusStrong string5;         //xy=165,264
+// AudioSynthKarplusStrong string7;         //xy=166,367
+// AudioSynthKarplusStrong string6;         //xy=170,300
+// AudioSynthKarplusStrong string8;         //xy=173,395
+// AudioSynthKarplusStrong string9;         //xy=217,449
+// AudioSynthKarplusStrong string10;        //xy=225,518
+// AudioSynthKarplusStrong string11;        //xy=251,583
+// AudioSynthKarplusStrong string12;        //xy=289,638
+// AudioEffectBitcrusher bitcrusher6;       //xy=345,360
+// AudioEffectBitcrusher bitcrusher4;       //xy=356,442
+// AudioEffectBitcrusher bitcrusher5;       //xy=365,404
+// AudioEffectBitcrusher bitcrusher3;       //xy=390,515
+// AudioMixer4 mixer1;                      //xy=393,257
+// AudioEffectBitcrusher bitcrusher2;       //xy=401,582
+// AudioEffectBitcrusher bitcrusher1;       //xy=427,640
+// AudioMixer4 mixer2;                      //xy=535,288
+// AudioMixer4 mixer3;                      //xy=623,392
+// AudioMixer4 mixer4;                      //xy=786,389
+// AudioMixer4 mixer5;                      //xy=876,296
+// AudioOutputI2S i2s1;                     //xy=989,209
+// AudioConnection patchCord1(string1, 0, mixer1, 0);
+// AudioConnection patchCord2(string2, 0, mixer1, 1);
+// AudioConnection patchCord3(string3, 0, mixer1, 2);
+// AudioConnection patchCord4(string4, 0, mixer1, 3);
+// AudioConnection patchCord5(string5, 0, mixer2, 1);
+// AudioConnection patchCord6(string7, bitcrusher6);
+// AudioConnection patchCord7(string6, 0, mixer2, 2);
+// AudioConnection patchCord8(string8, bitcrusher5);
+// AudioConnection patchCord9(string9, bitcrusher4);
+// AudioConnection patchCord10(string10, bitcrusher3);
+// AudioConnection patchCord11(string11, bitcrusher2);
+// AudioConnection patchCord12(string12, bitcrusher1);
+// AudioConnection patchCord13(bitcrusher6, 0, mixer3, 0);
+// AudioConnection patchCord14(bitcrusher4, 0, mixer3, 2);
+// AudioConnection patchCord15(bitcrusher5, 0, mixer3, 1);
+// AudioConnection patchCord16(bitcrusher3, 0, mixer3, 3);
+// AudioConnection patchCord17(mixer1, 0, mixer2, 0);
+// AudioConnection patchCord18(bitcrusher2, 0, mixer4, 1);
+// AudioConnection patchCord19(bitcrusher1, 0, mixer4, 2);
+// AudioConnection patchCord20(mixer2, 0, mixer5, 2);
+// AudioConnection patchCord21(mixer3, 0, mixer4, 0);
+// AudioConnection patchCord22(mixer4, 0, mixer5, 3);
+// AudioConnection patchCord23(mixer5, 0, i2s1, 1);
+// AudioConnection patchCord24(mixer5, 0, i2s1, 0);
+// AudioControlSGTL5000 sgtl5000_1;         //xy=374,82
 // GUItool: end automatically generated code
 
 // **********************************************************************
@@ -169,6 +227,7 @@ boolean direction = true; // direction up = true, down = false
 boolean played = false;
 boolean tap2play = false;
 boolean im = false;
+boolean fast = false;
 
 long b1,b2,b3,b4;
 
@@ -261,8 +320,8 @@ void loop() {
 
         // mid = combi;
         // Serial.printf("x=   %d, y=%d, z=%d", x, y, z);
-        Serial.printf("combi is  %d, D=%d, M=%d U=%d, CHORD= %d", combi, down, mid, up, chord);
-        Serial.println();
+        // Serial.printf("combi is  %d, D=%d, M=%d U=%d, CHORD= %d", combi, down, mid, up, chord);
+        // Serial.println();
         // count = count % bLength;
         // count = (count % avgbufLen);
         // avgbuf[count] = combi;
@@ -284,17 +343,22 @@ void loop() {
 // 369	307	452	560	495
         // **********************************************************************
         // GET BUTTON SENSORS
-        b1 =  button1.capacitiveSensor(sampleSizeForCapacitiveSensor);
-        b2 =  button2.capacitiveSensor(sampleSizeForCapacitiveSensor);
-        b3 =  button3.capacitiveSensor(sampleSizeForCapacitiveSensor);
-        b4 =  button4.capacitiveSensor(sampleSizeForCapacitiveSensor);
-        // Serial.printf("%d, %d, %d, %d, %d, ", b1, b2, b3,b4, B5);
-        // Serial.println();
+        b4 =  button1.capacitiveSensor(sampleSizeForCapacitiveSensor);
+        b3 =  button2.capacitiveSensor(sampleSizeForCapacitiveSensor);
+        b2 =  button3.capacitiveSensor(sampleSizeForCapacitiveSensor);
+        b1 =  button4.capacitiveSensor(sampleSizeForCapacitiveSensor);
+        Serial.printf("%d, %d, %d, %d ", b1, b2, b3,b4);
+        Serial.println();
 
         // **********************************************************************
         // IF BUTTONS
         // b1 & b2 & b3 & b4 - swap mode
         if (b1 > 80 && b2 > 80 && b3 > 80 && b4 > 80) {
+                drum1.frequency(60);
+                drum1.length(300);
+                drum1.secondMix(0.0);
+                drum1.pitchMod(1.0);
+                drum1.noteOn();
                 if (im) {
                         im = false;
                 }
@@ -305,12 +369,13 @@ void loop() {
                 }
                 delay(200);
         }
-        // b1 & b2
-        else if (b1 > 80 && b2 > 80) {
+        // b2 & b3
+        else if (b2 > 80 && b3 > 80) {
+                fast = false;
                 if (im)
                         chord = Bpow; // IM 1st chord
                 else
-                        chord = em7; // WW 2nd chord
+                        chord = Dsus42; // WW 2nd chord
 
                 if (tap2play)
                 { strum_dn(chord, 1.0);
@@ -318,14 +383,47 @@ void loop() {
 
                 // powerDOWN(chord, 1.);
 
-                Serial.println("Bpow");
+                Serial.println("b2b3");
+        }
+        else if (b3 > 80 && b4 > 80) {
+                fast = true;
+                if (im)
+                        chord = Gpow; // IM 1st chord
+                else
+                        chord = A7sus42; // WW 2nd chord
+
+                if (tap2play)
+                { strum_dn(chord, 1.0);
+                  delay(hand_delay);}
+
+                // powerDOWN(chord, 1.);
+
+                Serial.println("b3 b4");
+        }
+        // b1
+        // b1 & b2
+        else if (b1 > 80 && b2 > 80) {
+                fast = false;
+                if (im)
+                        chord = Epow; // IM 1st chord
+                // else
+                // chord = Bpow; // WW 2nd chord
+
+                if (tap2play)
+                { strum_dn(chord, 1.0);
+                  delay(hand_delay);}
+
+                // powerDOWN(chord, 1.);
+
+                Serial.println("b1b2");
         }
         // b1
         else if (b1 > 80 ) {
+                fast = false;
                 if (im)
-                        chord = Dpow; // IM 2nd chord
+                        chord = Bpow; // IM 2nd chord
                 else
-                        chord = Gmajor; // WW 2nd Chord
+                        chord = em7; // WW 1nd Chord
 
                 if (tap2play)
                 { strum_dn(chord, 1.0);
@@ -335,15 +433,15 @@ void loop() {
                 // powerDOWN(chord, 1.);
                 // strum_dn(chord, 1.0);
                 // delay(hand_delay);
-                Serial.println("Dpow");
+                Serial.println("b1");
         }
         // b2
         else if (b2 > 80) {
-
+                fast = false;
                 if (im)
-                        chord = Epow; // IM 3rd chord
+                        chord = Dpow; // IM 3rd chord
                 else
-                        chord = Gmajor; // WW wrd Chord
+                        chord = Gmajor; // WW 2nd Chord
 
 
                 if (tap2play)
@@ -353,11 +451,12 @@ void loop() {
                 // chord = Gmajor;
                 // strum_dn(chord, 1.0);
                 // delay(hand_delay);
-                Serial.println("Epow");
+                Serial.println("b2");
 
         }
         // b3
         else if (b3 > 80) {
+                fast = true;
                 if (im)
                         chord = Fspow; // IM 4th chord
                 else
@@ -369,11 +468,12 @@ void loop() {
                   delay(hand_delay);}
                 // strum_dn(chord, 1.0);
                 // delay(hand_delay);
-                Serial.println("Fspow");
+                Serial.println("b3");
 
         }
         // b4
         else if (b4 > 80) {
+                fast = true;
                 if (im)
                         chord = Gpow; // IM 4th chord
                 else
@@ -385,7 +485,7 @@ void loop() {
                   delay(hand_delay);}
                 // strum_dn(chord, 1.0);
                 // delay(hand_delay);
-                Serial.println("Gpow");
+                Serial.println("b4");
                 //
         }
         // **********************************************************************
@@ -420,11 +520,19 @@ void loop() {
                 // Serial.printf("x is %d, D=%d, M=%d U=%d,  y is %d, z is %d", x, yDown, yMid, yUp, y,z );
                 // Serial.println();
                 direction = false;
-                if (im)
+                if (im) {
                         strum_power(chord, 1.0);
-                else
+                        if (fast) {
+                                delay(256);
+                        }
+                        else
+                                delay(400);
+                }
+                else{
                         strum_dn(chord, 1.0);
-                delay(hand_delay);
+                        delay(hand_delay);
+                }
+
                 // delay(hand_delay);
                 // played = true;
         }

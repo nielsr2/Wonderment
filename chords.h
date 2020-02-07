@@ -43,7 +43,7 @@ const float Cmajor[6] = {      0, NOTE_C3, NOTE_E3, NOTE_G3, NOTE_C4, NOTE_E4}; 
 const float Dmajor[6] = {      0,       0, NOTE_D3, NOTE_A3, NOTE_D4, NOTE_Fs4}; // D - F# - A
 const float Emajor[6] = {NOTE_E2, NOTE_B2, NOTE_E3, NOTE_Gs3,NOTE_B3, NOTE_E4};  // E - G# - B
 const float Fmajor[6] = {      0, NOTE_A2, NOTE_F3, NOTE_A3, NOTE_C4, NOTE_F4};  // F - A - C
-const float Gmajor[6] = {NOTE_G2, NOTE_B2, NOTE_D3, NOTE_G3, NOTE_B3, NOTE_E4};  // G - B - D
+// const float Gmajor[6] = {NOTE_G2, NOTE_B2, NOTE_D3, NOTE_G3, NOTE_B3, NOTE_E4};  // G - B - D
 const float Amajor[6] = {      0, NOTE_A2, NOTE_E3, NOTE_A3, NOTE_Cs4,NOTE_E4};  // A - C# - E
 const float Bmajor[6] = {      0, NOTE_B2, NOTE_Fs3,NOTE_B3, NOTE_Ds4,NOTE_Fs4}; // B - D# - F#
 const float Cminor[6] = {      0, NOTE_C3, NOTE_G3, NOTE_C4, NOTE_Ds4,NOTE_G4};  // C - D# - G
@@ -56,17 +56,18 @@ const float Bminor[6] = {      0, NOTE_B2, NOTE_Fs3,NOTE_B3, NOTE_D4, NOTE_Fs4};
 
 // wonderwall....
 const float em7[6] = { NOTE_E2,NOTE_B2, NOTE_E3,NOTE_G3, NOTE_D4, NOTE_G4}; //
-//const float Gmajor[6] = {NOTE_G2, NOTE_B2, NOTE_D3, NOTE_G3, NOTE_B3, NOTE_E4};  // G - B - D
-const float Dsus4[6] = {0, 0, NOTE_D3, NOTE_A3, NOTE_D4, NOTE_G4};  // G - B - D
-const float A7sus4[6] = {0, 0, NOTE_E3, NOTE_G3, NOTE_D4, NOTE_G4};  // G - B - D
-
+const float Gmajor[6] = {NOTE_G2, NOTE_B2, NOTE_D3, NOTE_G3, NOTE_B3, NOTE_E4};  // G - B - D
+const float Dsus4[6] = {0, 0, NOTE_D3, NOTE_A3, NOTE_D4, NOTE_G4};
+const float Dsus42[6] = {0, 0, NOTE_D3, NOTE_G3, NOTE_D4, NOTE_G4};  // G - B - D
+const float A7sus4[6] = {0, NOTE_A2, NOTE_E3, NOTE_G3, NOTE_D4, NOTE_G4};  // G - B - D
+const float A7sus42[6] = {0, 0, NOTE_D3, NOTE_G3, NOTE_D4, NOTE_G4};
 
 // IRON man
-const float Bpow[6] = {NOTE_B2, NOTE_Fs3, 0,0,0,0};
+const float Bpow[6] = {0, NOTE_B2, NOTE_Fs3, 0,0,0};
 const float Dpow[6] = {0, NOTE_D3, NOTE_A3,0,0,0};
-const float Epow[6] = {0, NOTE_E3, NOTE_B3,0,0,0};
-const float Fspow[6] = {0, NOTE_Fs3, NOTE_Cs3,0,0,0};
-const float Gpow[6] = {0, NOTE_G3, NOTE_D3,0,0,0};
+const float Epow[6] = {0, NOTE_E3, NOTE_C4,0,0,0};
+const float Gpow[6] = {0, NOTE_G3, NOTE_D4,0,0,0};
+const float Fspow[6] = {0, NOTE_Fs3, NOTE_Cs4,0,0,0};
 //                   E2, F2, F2#, G2, G2#, A2, A2#, B2
 // C3, C3#, D3, D3#, E3, F3, F3#, G3, G3#, A3, A3#, B3
 // C4, C4#, D4, D4#, E4, F4, F4#, G4, G4#, A4, A4#, B4
